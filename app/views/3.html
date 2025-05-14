@@ -1,0 +1,38 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-form-group">
+        <span class="govuk-caption-l ">Purchased goods</span>
+        <h1 class="govuk-heading-l">
+            VAT amount
+        </h1>
+      </div>
+      <p class="govuk-body">An item that costs £{{data.gross}} with the 
+
+        {% if data['vatRate'] == '20' %}standard rate
+        {% elseif data['vatRate'] == '5' %}reduced rate
+        {% elseif data['vatRate'] == '0' %}zero rate
+        {% endif %}
+
+        of VAT applied would cost £{{data.net}}.</p>
+      <div class="govuk-inset-text">
+        The VAT calculated at {{data.vatRate}}% would be £{{data.vatAmount}}
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+        <div class="govuk-form-group">
+          <span class="govuk-caption-l">Purchased goods</span>
+          <h1 class="govuk-heading-l">
+              Calculate VAT
+          </h1>
+        </div>
+
+        <div class="govuk-form-group">
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-label--m" for="gross">
+              How much will you sell the item for without VAT added?
+            </label>
+            <div class="govuk-input__wrapper">
+              <div class="govuk-input__prefix" aria-hidden="true">£</div>
+              <input class="govuk-input govuk-input--width-5" id="gross" name="gross" type="text">
+            </div>
+          </div>
+        </div>
+
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h1 class="govuk-fieldset__heading">
+                What VAT rate should be applied?
+              </h1>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="vatRate" name="vatRate" type="radio" value="20">
+                <label class="govuk-label govuk-radios__label" for="vatRate">
+                  Standard rate - 20%
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="vatRate-2" name="vatRate" type="radio" value="5">
+                <label class="govuk-label govuk-radios__label" for="vatRate-2">
+                  Reduced rate - 5%
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="vatRate-3" name="vatRate" type="radio" value="0">
+                <label class="govuk-label govuk-radios__label" for="vatRate-3">
+                  Zero rate - 0%
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+
+
+
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Save and continue
+        </button>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
